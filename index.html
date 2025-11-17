@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>카카오톡 공유</title>
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
+<body>
+
+<script>
+  Kakao.init("ff9ae14e50059eda1305ea6dc9c4e3cf");
+
+  const urlParams = new URLSearchParams(location.search);
+  const req = urlParams.get("req");
+  const center = urlParams.get("center");
+  const item = urlParams.get("item");
+
+  const message =
+`▶ 전표가 생성되었습니다!
+
+▣ 요청번호: ${req}
+▣ 출고처: ${center}
+▣ 품목: ${item}`;
+
+  Kakao.Link.sendDefault({
+      objectType: "text",
+      text: message,
+      link: {
+          mobileWebUrl: location.href,
+          webUrl: location.href
+      }
+  });
+</script>
+
+</body>
+</html>
