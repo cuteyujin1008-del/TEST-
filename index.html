@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<title>Kakao Redirect Test</title>
+<title>Kakao Redirect</title>
 <script>
 function openKakao() {
   const params = new URLSearchParams(location.search);
@@ -11,18 +11,15 @@ function openKakao() {
   const center = params.get('center') || '';
   const item = params.get('item') || '';
 
-  // 카카오톡 공유 URL
-  const kakaoURL = 
-    "kakaolink://send?" +
-    "text=" + encodeURIComponent(
-      "전표가 생성되었습니다!\n" +
-      "요청번호: " + req + "\n" +
-      "출/반입: " + io + "\n" +
-      "출고처: " + center + "\n" +
-      "품목: " + item
-    );
+  const text = 
+    "전표가 생성되었습니다!\n" +
+    "ㆍ요청번호: " + req + "\n" +
+    "ㆍ출/반입: " + io + "\n" +
+    "ㆍ출고처: " + center + "\n" +
+    "ㆍ품목: " + item;
 
-  // 바로 실행
+  const kakaoURL = "kakaolink://send?text=" + encodeURIComponent(text);
+
   location.href = kakaoURL;
 }
 </script>
