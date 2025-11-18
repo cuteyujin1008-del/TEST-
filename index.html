@@ -1,30 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>전표 공유</title>
-</head>
+<html>
+<head><meta charset="UTF-8"><title>Kakao Share</title></head>
 <body>
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const req = urlParams.get('req') || '';
-  const io = urlParams.get('io') || '';
-  const center = urlParams.get('center') || '';
-  const item = urlParams.get('item') || '';
-
-  const text =
-`▶ 전표가 생성되었습니다!
-
-▣ 요청번호: ${req}
-▣ 출반입: ${io}
-▣ 출고처: ${center}
-▣ 품목: ${item}`;
-
-  const url = "kakaotalk://send?text=" + encodeURIComponent(text);
-  window.location.href = url;
+const params = new URLSearchParams(window.location.search);
+const req = params.get('req') || '';
+const io = params.get('io') || '';
+const center = params.get('center') || '';
+const item = params.get('item') || '';
+const text = `▶ 전표가 생성되었습니다!\n\n▣ 요청번호: ${req}\n▣ 출반입: ${io}\n▣ 출고처: ${center}\n▣ 품목: ${item}`;
+window.location.href = "intent://send?text=" + encodeURIComponent(text) + "#Intent;scheme=kakaotalk;package=com.kakao.talk;end";
 </script>
-
-<p>전표 메시지를 카카오톡으로 보내는 중입니다...</p>
-
 </body>
 </html>
