@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<title>Kakao Redirect</title>
-<script>
-function openKakao() {
-  const params = new URLSearchParams(location.search);
-  const req = params.get('req') || '';
-  const io = params.get('io') || '';
-  const center = params.get('center') || '';
-  const item = params.get('item') || '';
+  <meta charset="UTF-8" />
+  <title>Kakao Redirect</title>
+  <script>
+    function openKakao() {
+      const params = new URLSearchParams(location.search);
+      const req    = params.get('req')    || '';
+      const io     = params.get('io')     || '';
+      const center = params.get('center') || '';
+      const item   = params.get('item')   || '';
 
-  const text = 
-    "전표가 생성되었습니다!\n" +
-    "ㆍ요청번호: " + req + "\n" +
-    "ㆍ출/반입: " + io + "\n" +
-    "ㆍ출고처: " + center + "\n" +
-    "ㆍ품목: " + item;
+      const text =
+        "전표가 생성되었습니다!\n" +
+        "ㆍ요청번호: " + req    + "\n" +
+        "ㆍ출/반입: "   + io     + "\n" +
+        "ㆍ출고처: "     + center + "\n" +
+        "ㆍ품목: "       + item;
 
-  const kakaoURL = "kakaolink://send?text=" + encodeURIComponent(text);
+      // 카카오톡 링크 호출
+      const kakaoURL = "kakaolink://send?text=" + encodeURIComponent(text);
 
-  location.href = kakaoURL;
-}
-</script>
+      // 바로 실행
+      location.href = kakaoURL;
+    }
+  </script>
 </head>
 <body onload="openKakao()">
-<p>카카오톡을 여는 중...</p>
+  <p>카카오톡을 여는 중...</p>
 </body>
 </html>
